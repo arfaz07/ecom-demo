@@ -18,14 +18,14 @@ export default async function Home() {
         "URL",
         `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
       );
-      return {
-        features: [],
-      };
-      // const result = await fetch(
-      //   `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
-      // );
+      // return {
+      //   features: [],
+      // };
+      const result = await fetch(
+        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+      );
       // console.log("result**", result);
-      // return result?.json();
+      return await result?.json();
     } catch (error) {
       console.log("error**", error);
       return {
