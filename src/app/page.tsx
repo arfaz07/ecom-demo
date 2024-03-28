@@ -35,7 +35,7 @@ export default async function Home() {
           })}`}</p>
         </div>
         <div className={styles.cardContainer}>
-          {features.map((feature: ICardProps) => (
+          {features?.map((feature: ICardProps) => (
             <Card
               key={feature.title}
               description={feature.description}
