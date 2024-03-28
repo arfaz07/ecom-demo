@@ -13,10 +13,14 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const fetchData = useCallback(async () => {
-    const result = await fetch(
-      `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
-    );
-    return result.json();
+    try {
+      const result = await fetch(
+        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+      );
+      return result.json();
+    } catch (error) {
+      return [];
+    }
   }, []);
   const response = await fetchData();
   const size = randomNumberToSeven();
