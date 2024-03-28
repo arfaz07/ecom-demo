@@ -14,11 +14,17 @@ export const metadata: Metadata = {
 export default async function Home() {
   const fetchData = useCallback(async () => {
     try {
+      console.log(
+        "URL",
+        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+      );
       const result = await fetch(
         `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
       );
+      console.log("result**", result);
       return result?.json();
     } catch (error) {
+      console.log("error**", error);
       return [];
     }
   }, []);
