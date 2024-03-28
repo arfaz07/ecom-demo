@@ -1,0 +1,55 @@
+.link {
+  color: #000;
+  text-decoration: none;
+}
+
+.container {
+  min-width: 1280px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+
+.header {
+  color: #fff;
+  /* background: #000; */
+  background-color: #272727;
+}
+
+/* ロゴ */
+.header > .container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.areaLogoHeader .logo {
+  display: block;
+}
+
+/* .area_logo_header .logo {} */
+
+/* ナビゲーション */
+.areaNavHeader {
+  margin-left: auto;
+}
+
+/* リストナビ */
+.listNavHeader {
+  display: flex;
+  align-items: center;
+}
+
+.listNavHeader > li {
+  list-style: none;
+}
+
+.listNavHeader > li + li {
+  margin-left: 40px;
+}
+
+.listNavHeader .link {
+  font: 500 15px/1em "noto sans japanese", sans-serif;
+  color: #fff;
+}
