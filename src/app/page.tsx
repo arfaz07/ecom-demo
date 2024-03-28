@@ -17,7 +17,7 @@ export default async function Home() {
       const result = await fetch(
         `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
       );
-      return result.json();
+      return result?.json();
     } catch (error) {
       return [];
     }
