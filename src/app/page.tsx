@@ -7,14 +7,17 @@ import { randomNumberToSeven } from "@/utils/helper";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'SYU Demo',
-  description: 'SEO Description',
-  };
+  title: "SYU Demo",
+  description: "SEO Description",
+};
 
 export default async function Home() {
   const fetchData = useCallback(async () => {
-    const result = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/features`);
-    return result.json();
+    // const result = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/features`);
+    // return result.json();
+    return {
+      features: [],
+    };
   }, []);
   const response = await fetchData();
   const size = randomNumberToSeven();
