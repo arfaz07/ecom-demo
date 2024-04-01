@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: "SYU Demo",
       description: `SEO Description with ${features?.length}`,
-      keywords: ["B-Tech", "M-Tech"],
+      keywords: ["B_Tech", "M_Tech"],
     };
   } catch (error) {
     return {
