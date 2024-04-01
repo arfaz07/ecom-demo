@@ -4,7 +4,7 @@ import Header from "@/components/header/header";
 import Card, { ICardProps } from "@/components/card/card";
 import { useCallback } from "react";
 import { randomNumberToSeven } from "@/utils/helper";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 
 export const metadata: Metadata = {
   title: "SYU Demo",
@@ -14,17 +14,9 @@ export const metadata: Metadata = {
 export default async function Home() {
   const fetchData = useCallback(async () => {
     try {
-      console.log(
-        "URL",
-        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
-      );
-      // return {
-      //   features: [],
-      // };
       const result = await fetch(
         `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
       );
-      // console.log("result**", result);
       return await result?.json();
     } catch (error) {
       console.log("error**", error);
