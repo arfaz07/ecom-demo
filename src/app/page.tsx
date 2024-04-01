@@ -4,18 +4,26 @@ import Header from "@/components/header/header";
 import Card, { ICardProps } from "@/components/card/card";
 import { useCallback } from "react";
 import { randomNumberToSeven } from "@/utils/helper";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "SYU Demo",
-  description: "SEO Description",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const result = await fetch(
+    `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+  );
+  const response = await result?.json();
+  const size = randomNumberToSeven();
+  const features = response?.features?.slice(0, size);
+  return {
+    title: "SYU Demo",
+    description: `SEO Description with ${features?.length}`,
+  };
+}
 
 export default async function Home() {
   const fetchData = useCallback(async () => {
     try {
       const result = await fetch(
-        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+        `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
       );
       return await result?.json();
     } catch (error) {
@@ -32,6 +40,9 @@ export default async function Home() {
     <>
       <Header />
       <main className={styles.main}>
+        <h1 className={styles.marginAll}>
+          Find Colleges, Courses & Exams that are Best for You
+        </h1>
         <div className={styles.time}>
           <p>{`Last Syned from server: ${new Date().toLocaleString("en-US", {
             timeZone: "Asia/Kolkata",

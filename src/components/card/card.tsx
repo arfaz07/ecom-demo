@@ -13,7 +13,7 @@ const Card: FC<ICardProps> = ({ icon, title, description }) => {
     <div className={styles.card}>
       <Image src={icon} height={32} width={32} alt={title} />
       <i className={styles.i}></i>
-      <h1 className={styles.title}>{title}</h1>
+      <h2 className={styles.title}>{title}</h2>
       <p className={styles.description}>{description}</p>
     </div>
   );
