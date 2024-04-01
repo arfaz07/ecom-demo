@@ -8,7 +8,7 @@ import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const result = await fetch(
-    `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
   );
   const response = await result?.json();
   const size = randomNumberToSeven();
@@ -23,7 +23,7 @@ export default async function Home() {
   const fetchData = useCallback(async () => {
     try {
       const result = await fetch(
-        `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
       );
       return await result?.json();
     } catch (error) {
