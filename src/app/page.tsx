@@ -10,7 +10,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const result = await fetch(
     `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
   );
+  console.log("result****", result);
   const response = await result?.json();
+  console.log("response****", response);
   const size = randomNumberToSeven();
   const features = response?.features?.slice(0, size);
   return {
