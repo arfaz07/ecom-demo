@@ -7,25 +7,32 @@ import { randomNumberToSeven } from "@/utils/helper";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const result = await fetch(
-    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
-  );
-  console.log("result****", result);
-  const response = await result?.json();
-  console.log("response****", response);
-  const size = randomNumberToSeven();
-  const features = response?.features?.slice(0, size);
-  return {
-    title: "SYU Demo",
-    description: `SEO Description with ${features?.length}`,
-  };
+  try {
+    const result = await fetch(
+      `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+    );
+    console.log("result****", result);
+    const response = await result?.json();
+    console.log("response****", response);
+    const size = randomNumberToSeven();
+    const features = response?.features?.slice(0, size);
+    return {
+      title: "SYU Demo",
+      description: `SEO Description with ${features?.length}`,
+    };
+  } catch (error) {
+    return {
+      title: "SYU Demo",
+      description: `SEO Description with initial`,
+    };
+  }
 }
 
 export default async function Home() {
   const fetchData = useCallback(async () => {
     try {
       const result = await fetch(
-        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
+        `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/features`
       );
       return await result?.json();
     } catch (error) {
