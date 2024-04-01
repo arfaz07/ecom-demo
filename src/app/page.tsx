@@ -19,6 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: "SYU Demo",
       description: `SEO Description with ${features?.length}`,
+      keywords: ["B-Tech", "M-Tech"],
     };
   } catch (error) {
     return {
@@ -53,9 +54,9 @@ export default async function Home() {
           Find Colleges, Courses & Exams that are Best for You
         </h1>
         <div className={styles.time}>
-          <p>{`Last Syned from server: ${new Date().toLocaleString("en-US", {
+          <b>{`Last Syned from server: ${new Date().toLocaleString("en-US", {
             timeZone: "Asia/Kolkata",
-          })}`}</p>
+          })}`}</b>
         </div>
         <div className={styles.cardContainer}>
           {features?.map((feature: ICardProps) => (
